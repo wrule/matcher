@@ -2,12 +2,13 @@
 const pattern = `function ^[a-zA-Z_][a-zA-Z0-9_]* ( ) { }`;
 
 const p = {
-  '$id': /^[a-zA-Z_][a-zA-Z0-9_]*/,
-  '$number': /^\d+/,
-  '$assignment': `$id = $number`,
-  '$function': `function $id ( ) { $paragraph }`,
-  '$statement': ['$assignment', '$function'],
-  '$paragraph': '$command*',
+  '#id': /^[a-zA-Z_][a-zA-Z0-9_]*/,
+  '#number': /^\d+/,
+  '#assignment': `$id = $number`,
+  '#function': `function $id ( ) { $paragraph }`,
+  '#statement': ['$assignment', '$function'],
+  '#paragraph': '$statement*',
+  '$paragraph': '$end',
 };
 
 const doc = `
