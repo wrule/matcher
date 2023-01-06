@@ -2,9 +2,9 @@
 const pattern = `function ^[a-zA-Z_][a-zA-Z0-9_]* ( ) { }`;
 
 const doc = `
-function _____() {
+function main() {
 
-}123`;
+}`;
 
 function
 match_pop(doc: string, matcher: string | RegExp) {
