@@ -4,8 +4,10 @@ const pattern = `function ^[a-zA-Z_][a-zA-Z0-9_]* ( ) { }`;
 const p = {
   '$id': /^[a-zA-Z_][a-zA-Z0-9_]*/,
   '$number': /^\d+/,
-  '$function': `function $id ( ) { }`,
   '$assignment': `$id = $number`,
+  '$function': `function $id ( ) { $paragraph }`,
+  '$statement': ['$assignment', '$function'],
+  '$paragraph': '$command*',
 };
 
 const doc = `
