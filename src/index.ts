@@ -8,7 +8,7 @@ const p = {
   '#function': `function $id ( ) { $paragraph }`,
   '#statement': ['$assignment', '$function'],
   '#paragraph': '$statement*',
-  '$paragraph': '$end',
+  '$paragraph': '@end',
 };
 
 const doc = `
