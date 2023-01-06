@@ -1,11 +1,10 @@
 
-const regex = `function main ( ) { }`;
+const pattern = `function ^[a-zA-Z_][a-zA-Z0-9_]* ( ) { }`;
 
 const doc = `
-function main() {
+function _____() {
 
-}
-`;
+}123`;
 
 function
 match_pop(doc: string, matcher: string | RegExp) {
@@ -23,13 +22,16 @@ function parse(pattern: string, doc: string) {
   const matchers = pattern.split(/\s+/);
   doc = match_pop(doc, /\s*/).next;
   matchers.forEach((matcher) => {
-    console.log(matcher);
+    const matcher_result = match_pop(doc, matcher);
+    result.push([matcher_result.matcher, matcher_result.result]);
+    doc = matcher_result.next;
+    doc = match_pop(doc, /\s*/).next;
   });
   return result;
 }
 
 function main() {
-  parse(regex, doc);
+  console.log(parse(pattern, doc));
 }
 
 main();
